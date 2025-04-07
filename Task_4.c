@@ -13,25 +13,22 @@ original functionality?
 #include <stdlib.h>
 #include <string.h>
 
-int* compute_array(char* string_combined) 
-{
-    int n = strlen(string_combined);
-    int* array_1 = (int*)malloc(sizeof(int)*n);
-    array_1[0] = 0;
-    for (int i = 1; i < n; i++) 
-    {
-        array_1[i] = 0;
-       
-        while(((i + array_1[i]) < n) && (string_combined[array_1[i]] == string_combined[i + array_1[i]])) 
-        {
+int* compute_array(char* string_combined) {
+    int n = strlen(string_combined); // get length of string_combined
+    int* array_1 = (int*)malloc(sizeof(int)*n); // allocate memory for array_1 with size of string_combined
+    array_1[0] = 0; // manually set first element to 0 as base case
+    for (int i = 1; i < n; i++) {// run for loop for length of string_combined
+        array_1[i] = 0; // set each array_1 element to 0 starting from index 1 (second element)
+        while(((i + array_1[i]) < n) && (string_combined[array_1[i]] == string_combined[i + array_1[i]])) {
+            // increases value of array_1[i] as long as the characters in the string continue to match between 
+            // string_combined[array[i]] and string_combined[i+array_1[i]]
             (array_1[i])++;
         }
     }
     return array_1;
 }
 
-int main()
-{
+int main() {
     char* string_1 = "abc";
     char* separator = "$";
     char* string_2 = "abcacbabcabddbabcaxabc";
@@ -44,10 +41,8 @@ int main()
     int n = strlen(string_combined);
     int m = strlen(string_1);
    
-    for (int i = 0; i < n; i++) 
-    {
-        if (array_1[i] == m) 
-        {
+    for (int i = 0; i < n; i++) {
+        if (array_1[i] == m) {
             printf("%d ", i - m - 1);
         }
     }
