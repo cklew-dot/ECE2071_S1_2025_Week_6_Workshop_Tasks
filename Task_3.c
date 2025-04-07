@@ -48,7 +48,7 @@ int main()
 	struct node* printPtr = NULL;
 	int temp = 0;
     int count_nodes = 0;
-	printf("Enter the value of the new data member: ");
+	printf("Enter the value of the new data member: "); // 7->4->6->5->1->2->3
 	scanf("%d", &temp);
 	for (count_nodes = 0; temp > 0; count_nodes++)
 	{
@@ -105,25 +105,20 @@ int main()
 	return 0;
 }
 
-void split_list(struct node **Header_1, struct node **Header_2, int count_nodes)
-{
+void split_list(struct node **Header_1, struct node **Header_2, int count_nodes) {
 	struct node* prevPtr = NULL;
 	struct node* curPtr = (*Header_1);
-	for (int i = 0; i <= count_nodes; i++)
-	{
-		if (curPtr != NULL)
-		{
+	for (int i = 0; i < count_nodes; i++) { // node walking to node Header_2
+		if (curPtr != NULL) {
 			prevPtr = curPtr;
 			curPtr = curPtr->nextPtr;
 		}
 	}
-	if ((prevPtr == NULL) || (curPtr == NULL)) 
-	{
+	if ((prevPtr == NULL) || (curPtr == NULL)) { // if Header_1 is also NULL
 		return;
 	}
-	else
-	{
-		curPtr->nextPtr = NULL;
+	else {
+		prevPtr->nextPtr = NULL;
 		(*Header_2) = curPtr;
 	}
 }
