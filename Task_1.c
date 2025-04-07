@@ -45,7 +45,7 @@ void filter_ascending(char* string_1)
         {
             if (string_1[j] > string_1[j+1])
             {
-                for (int k = 0; string_1[k+1] != '\0'; k++)
+                for (int k = j+1; string_1[k] != '\0'; k++)
                 {
                     string_1[k] = string_1[k+1];
                 }
